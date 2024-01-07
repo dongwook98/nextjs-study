@@ -3,6 +3,9 @@ import Link from 'next/link';
 import './globals.css';
 import styles from './layout.module.css';
 
+/**
+ * 모든 경로에서 사용하는 메타데이터
+ */
 export const metadata: Metadata = {
   title: '멋진 제품 사이트',
   description: '멋진 제품을 판매하는 곳입니다.',
@@ -11,6 +14,9 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * 모든 경로에서 사용하는 전체 레이아웃
+ */
 export default function RootLayout({
   children,
 }: {
