@@ -1,3 +1,5 @@
+import { getProducts, getProduct } from '@/service/products';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 type Props = {
@@ -6,22 +8,38 @@ type Props = {
   };
 };
 
-export function generateMetadata({ params }: Props) {
+// 동적으로 메타데이터 생성
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const product = await getProduct(params.slug);
+
   return {
-    title: `제품의 이름: ${params.slug}`,
+    title: `제품의 이름: ${product?.name}`,
   };
 }
 
-export default function PantsPage({ params }: Props) {
-  if (params.slug === 'nothing') {
+/**
+ * /products/pants, /products/skirt와 같이 동적으로 라우팅 되는 페이지
+ * pants와 skirt와 같은 데이터는 Props안의 slug로 전달, 이 때 slug는 []안의 이름
+ */
+export default async function ProductPage({ params: { slug } }: Props) {
+  const product = await getProduct(slug);
+
+  if (!product) {
     notFound();
   }
-  return <h1>{params.slug} 제품 설명 페이지</h1>;
+
+  // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾아서 그걸 보여줌
+  return <h1>{product.name} 제품 설명 페이지</h1>;
 }
 
-export function generateStaticParams() {
-  const products = ['pants', 'skirt'];
+/**
+ * 동적 라우팅은 기본적으로 SSR로 동작함
+ * 몇개의 페이지는 SSG로 만들고 싶다면 generateStaticParams에 params 명시
+ */
+export async function generateStaticParams() {
+  // 모든 제품의 페이지들을 미리 만들어 둘 수 있게 해줌 (SSG)
+  const products = await getProducts();
   return products.map((product) => ({
-    slug: product,
+    slug: product.id,
   }));
 }
