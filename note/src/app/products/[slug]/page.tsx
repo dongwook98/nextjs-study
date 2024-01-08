@@ -1,7 +1,8 @@
+import GoProductsButton from '@/components/GoProductsButton';
 import { getProducts, getProduct } from '@/service/products';
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 // export const revalidate = 3;
 
@@ -28,7 +29,8 @@ export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug); // 서버 파일에 있는 데이터중 해당 제품의 정보를 찾기, 서버 컴포넌트라 가능!
 
   if (!product) {
-    notFound();
+    redirect('/products'); // 동적 redirect
+    // notFound();
   }
 
   return (
@@ -40,6 +42,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width='300'
         height='300'
       />
+      <GoProductsButton />
     </>
   );
 }
