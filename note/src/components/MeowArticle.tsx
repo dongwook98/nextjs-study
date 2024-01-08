@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from './MeowArticle.module.css';
 
 export default function MeowArticle() {
-  const [text, setText] = useState('데이터 준비중...');
+  const [text, setText] = useState('데이터 준비중...'); // 데이터 준비중...은 pre-rendering된다.
 
   useEffect(() => {
     fetch('https://meowfacts.herokuapp.com')

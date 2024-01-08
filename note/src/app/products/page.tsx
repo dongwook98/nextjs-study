@@ -19,6 +19,7 @@ export default async function ProductsPage() {
           </li>
         ))}
       </ul>
+      {/* MeowArticle은 우리 웹사이트에서 중요하지않고 요청마다 변경되야하므로 CSR로 처리하기 위해 분리 */}
       <MeowArticle />
     </>
   );
