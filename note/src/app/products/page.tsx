@@ -5,6 +5,7 @@ import Link from 'next/link';
 // export const revalidate = 3; // ISR
 
 export default async function ProductsPage() {
+  throw new Error();
   // 서버 파일(데이터베이스)에 있는 제품의 리스트를 읽기, 서버 컴포넌트라 가능!
   const products = await getProducts();
 
