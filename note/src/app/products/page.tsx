@@ -1,7 +1,8 @@
+import MeowArticle from '@/components/MeowArticle';
 import { getProducts } from '@/service/products';
 import Link from 'next/link';
 
-export const revalidate = 3; // ISR
+// export const revalidate = 3; // ISR
 
 // /products 페이지
 export default async function ProductsPage() {
@@ -18,6 +19,7 @@ export default async function ProductsPage() {
           </li>
         ))}
       </ul>
+      <MeowArticle />
     </>
   );
 }
