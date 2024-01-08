@@ -11,6 +11,10 @@ const nextConfig = {
       },
     ],
   },
+  /**
+   * redirects는 A -> B로 다시 데리고가는 느낌
+   * 사용자가 잘못된 경로로 접근시 알맞게 보내줌
+   */
   async redirects() {
     return [
       {
@@ -22,6 +26,23 @@ const nextConfig = {
         source: '/products/deleted_temp',
         destination: '/products',
         permanent: false,
+      },
+    ];
+  },
+  /**
+   * rewrites는 A를 B로 대체하는 느낌
+   * 복잡한 경로대신 사용자에게 간단한 경로 제공
+   * 프로젝트 구조 노출 X
+   */
+  async rewrites() {
+    return [
+      {
+        source: '/dongwook',
+        destination: '/about/me/dongwook',
+      },
+      {
+        source: '/items/:slug',
+        destination: '/products/:slug',
       },
     ];
   },
