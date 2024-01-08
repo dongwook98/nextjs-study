@@ -8,6 +8,8 @@ type Props = {
 
 // 12버전에서 페이지 컴포넌트는 무조건 클라이언트에서 동작, pre-rendering된 html은 알아서 해줌
 export default function SSGPage({ products }: Props) {
+  console.log('클라이언트에서 동작');
+
   return (
     <>
       <h1>제품 소개 페이지</h1>
