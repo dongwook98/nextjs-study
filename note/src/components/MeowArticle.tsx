@@ -1,3 +1,6 @@
+/**
+ * fetch를 사용한 CSR
+ */
 'use client';
 import { useEffect, useState } from 'react';
 import styles from './MeowArticle.module.css';

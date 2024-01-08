@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * 모든 경로에서 사용하는 전체 레이아웃
+ * 모든 경로에서 사용하는 전체 레이아웃, 헤더
  */
 export default function RootLayout({
   children,

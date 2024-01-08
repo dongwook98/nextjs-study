@@ -8,7 +8,7 @@ type Props = {
 
 // 12버전은 컴포넌트는 무조건 클라이언트 동작, pre-rendering된 html은 알아서 해줌
 export default function SSRPage({ products }: Props) {
-  console.log('클라이언트에서 동작');
+  console.log('SSR 클라이언트에서 동작'); // 빌드 후 서버, 클라이언트 둘 다 실행
 
   return (
     <>

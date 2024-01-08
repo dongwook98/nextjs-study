@@ -4,9 +4,8 @@ import Link from 'next/link';
 
 // export const revalidate = 3; // ISR
 
-// /products 페이지
 export default async function ProductsPage() {
-  // 서버 파일(데이터베이스)에 있는 제품의 리스트를 읽어와서, 그걸 보여줌
+  // 서버 파일(데이터베이스)에 있는 제품의 리스트를 읽기, 서버 컴포넌트라 가능!
   const products = await getProducts();
 
   return (
